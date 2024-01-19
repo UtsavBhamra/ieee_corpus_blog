@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from config.models import SIG
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
@@ -140,9 +138,7 @@ class ExecutiveMember(models.Model):
         max_length=39, blank=True, null=True, verbose_name="GitHub Username"
     )
     is_nep = models.BooleanField(default=False, verbose_name="Is NEP Member?")
-    date_joined = models.DateTimeField(
-        default=datetime.now(), verbose_name="Date Joined"
-    )
+    date_joined = models.DateField(verbose_name="Date Joined")
 
     def save(self, *args, **kwargs):
         self.roll_number = self.roll_number.upper()
